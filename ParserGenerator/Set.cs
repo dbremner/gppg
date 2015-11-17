@@ -13,7 +13,7 @@ namespace QUT.GPGen
 {
 	public class SetCollection<T>: IEnumerable<T>
 	{
-		private Dictionary<T, bool> elements = new Dictionary<T, bool>();
+		private readonly Dictionary<T, bool> elements = new Dictionary<T, bool>();
 
 		public SetCollection()
 		{

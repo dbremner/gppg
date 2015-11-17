@@ -14,10 +14,10 @@ namespace QUT.GPGen
 {
     internal class SemanticAction
     {
-        private Production production;
-        private int pos;
-        private string commands;
-        private LexSpan codeSpan;
+        private readonly Production production;
+        private readonly int pos;
+        private readonly string commands;
+        private readonly LexSpan codeSpan;
 
 
         internal SemanticAction(Production production, int pos, LexSpan span)

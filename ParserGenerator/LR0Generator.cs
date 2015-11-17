@@ -14,7 +14,7 @@ namespace QUT.GPGen
 	{
 		protected List<AutomatonState> states = new List<AutomatonState>();
 		protected Grammar grammar;
-		private Dictionary<Symbol, List<AutomatonState>> accessedBy = new Dictionary<Symbol,List<AutomatonState>>();
+		private readonly Dictionary<Symbol, List<AutomatonState>> accessedBy = new Dictionary<Symbol,List<AutomatonState>>();
 
 
 		internal LR0Generator(Grammar grammar)

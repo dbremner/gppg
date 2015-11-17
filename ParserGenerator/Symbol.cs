@@ -14,7 +14,7 @@ namespace QUT.GPGen
     [Serializable]
 	internal abstract class Symbol
 	{
-		private string name;
+		private readonly string name;
 		internal string kind;
 
 		internal abstract int num
@@ -44,7 +44,7 @@ namespace QUT.GPGen
         internal static int Max { get { return max; } }
 
 		internal Precedence prec;
-		private int n;
+		private readonly int n;
 		internal bool symbolic;
         private string alias;
 
@@ -146,7 +146,7 @@ namespace QUT.GPGen
         // end
 
         static int count;
-		private int n;
+		private readonly int n;
 		internal List<Production> productions = new List<Production>();
 
 		internal NonTerminal(string name)

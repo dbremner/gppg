@@ -54,7 +54,7 @@ namespace QUT.GPGen
         internal string PartialMark { get { return (IsPartial ? " partial" : ""); } }
         internal LexSpan ValueTypeNameSpan;
 
-        ErrorHandler handler;
+	    readonly ErrorHandler handler;
         bool hasNonTerminatingNonTerms;
 
         internal bool HasNonTerminatingNonTerms { 
@@ -512,7 +512,7 @@ namespace QUT.GPGen
         // =====================================================================================
 
         const int prodIndexWidth = 5;
-        string indexSkip = new string( ' ', prodIndexWidth );
+	    readonly string indexSkip = new string( ' ', prodIndexWidth );
 
         internal void GenerateReport(StreamWriter writer, string inputFilename, List<AutomatonState> statelist)
         {
@@ -752,8 +752,8 @@ namespace QUT.GPGen
 
     internal class ReduceReduceConflict : Conflict
     {
-        int chosen;
-        AutomatonState inState;
+        readonly int chosen;
+        readonly AutomatonState inState;
 
         internal ReduceReduceConflict(Terminal sy, string s1, string s2, int prod, AutomatonState state) 
             : base(sy, s1, s2)
@@ -789,8 +789,8 @@ namespace QUT.GPGen
 
     internal class ShiftReduceConflict : Conflict
     {
-        AutomatonState fromState;
-        AutomatonState toState;
+        readonly AutomatonState fromState;
+        readonly AutomatonState toState;
         internal ShiftReduceConflict(Terminal sy, string s1, string s2, AutomatonState from, AutomatonState to)
             : base(sy, s1, s2)
         { 
