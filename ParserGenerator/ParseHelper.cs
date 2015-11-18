@@ -19,11 +19,11 @@ namespace QUT.GPGen.Parser
     {
         internal ErrorHandler handler;
 
-        private Grammar grammar;
+        private readonly Grammar grammar;
         internal Grammar Grammar { get { return grammar; } }
 
-        private string baseName;
-        private string sourceFileInfo;
+        private readonly string baseName;
+        private readonly string sourceFileInfo;
 
         internal string ListfileName { get { return baseName + ".lst"; } }
         internal string SourceFileInfo { get { return sourceFileInfo; } }
