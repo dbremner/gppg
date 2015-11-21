@@ -45,7 +45,7 @@ namespace QUT.GPGen {
             Stream inputFile = null;
 
             Grammar grammar = null;
-            ErrorHandler handler = new ErrorHandler();
+            var handler = new ErrorHandler();
             string inputFileInfo = null;  // Filename plus revision time.
             Lexers.Scanner scanner = null;
             Parser.Parser parser = null;
@@ -93,7 +93,7 @@ namespace QUT.GPGen {
                         // No ambiguating context possible since result appears in delimited error message
                         handler.ListError( null, 103, CharacterUtilities.MapCodepointToDisplayForm( Terminal.Max ), '\'' ); 
 
-                    LALRGenerator generator = new LALRGenerator( grammar );
+                    var generator = new LALRGenerator( grammar );
                     List<AutomatonState> states = generator.BuildStates();
                     generator.ComputeLookAhead();
                     generator.BuildParseTable();
@@ -104,7 +104,7 @@ namespace QUT.GPGen {
                     // create a diagnostic report as the grammar is incomplete.
                     //
                     if (!handler.Errors) {
-                        CodeGenerator emitter = new CodeGenerator( grammar );
+                        var emitter = new CodeGenerator( grammar );
                         emitter.Generate( states );
                     }
 
@@ -112,8 +112,8 @@ namespace QUT.GPGen {
                     if (Report || DoDiagnose) {
                         string htmlName = System.IO.Path.ChangeExtension( filename, ".report.html" );
                         try {
-                            System.IO.FileStream htmlFile = new System.IO.FileStream( htmlName, System.IO.FileMode.Create );
-                            System.IO.StreamWriter htmlWriter = new System.IO.StreamWriter( htmlFile );
+                            var htmlFile = new System.IO.FileStream( htmlName, System.IO.FileMode.Create );
+                            var htmlWriter = new System.IO.StreamWriter( htmlFile );
                             Grammar.HtmlHeader( htmlWriter, filename );
 
                             if (Report && DoDiagnose)
@@ -160,7 +160,7 @@ namespace QUT.GPGen {
 
         private static StreamWriter ListingFile( string outName ) {
             try {
-                FileStream listFile = new FileStream( outName, FileMode.Create );
+                var listFile = new FileStream( outName, FileMode.Create );
                 if (Verbose) Console.Error.WriteLine( "GPPG: opened listing file <{0}>", outName );
                 return new StreamWriter( listFile );
             }

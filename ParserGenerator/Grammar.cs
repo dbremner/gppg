@@ -276,12 +276,12 @@ namespace QUT.GPGen
             int count = 0;
             // ntStack is the working stack used to find Strongly Connected 
             // Components, hereafter referred to as SCC.
-            Stack<NonTerminal> ntStack = new Stack<NonTerminal>();
+            var ntStack = new Stack<NonTerminal>();
 
             // candidates is the list of states that *might* be to blame.
             // These are two groups: leaves of the dependency graph, and
             // NonTerminals that fix up a complete SCC
-            List<NonTerminal> candidates = new List<NonTerminal>();
+            var candidates = new List<NonTerminal>();
             foreach (NonTerminal nt in ntDependencies)
             {
                 if (nt.dependsOnList.Count == 0)
@@ -342,7 +342,7 @@ namespace QUT.GPGen
         // Return a new list with only the terminating (fixed) elements of the input.
         private static List<NonTerminal> FilterTerminatingElements(List<NonTerminal> input)
         {
-            List<NonTerminal> rslt = new List<NonTerminal>();
+            var rslt = new List<NonTerminal>();
             foreach (NonTerminal nt in input)
                 if (nt.terminating)
                     rslt.Add(nt);
@@ -351,7 +351,7 @@ namespace QUT.GPGen
 
         private List<NonTerminal> BuildDependencyGraph()
         {
-            List<NonTerminal> rslt = new List<NonTerminal>();
+            var rslt = new List<NonTerminal>();
             foreach (KeyValuePair<string, NonTerminal> kvp in this.nonTerminals)
             {
                 NonTerminal nonTerm = kvp.Value;
@@ -599,7 +599,7 @@ namespace QUT.GPGen
         }
 
         static string KernelToString( AutomatonState thisState ) {
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            var builder = new System.Text.StringBuilder();
 
             builder.AppendLine();
             builder.AppendLine( Header2( "Kernel Items" ) );
@@ -612,7 +612,7 @@ namespace QUT.GPGen
 
         static string StateToString(AutomatonState thisState)
         {
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            var builder = new System.Text.StringBuilder();
 
             //builder.AppendLine(Header2("Kernel Items"));
             //foreach (ProductionItem item in thisState.kernelItems)
@@ -664,8 +664,8 @@ namespace QUT.GPGen
         static string ItemToString(ProductionItem item, bool doLA)
         {
             int lhsLength;
-            List<string> list = new List<string>();
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            var list = new List<string>();
+            var builder = new System.Text.StringBuilder();
 
             builder.AppendFormat("{0} {1}: ", item.production.num, item.production.lhs);
             lhsLength = builder.Length;

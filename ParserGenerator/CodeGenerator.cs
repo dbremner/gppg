@@ -559,7 +559,7 @@ namespace QUT.GPGen
                     for (int i = 0; i < span.startColumn; i++)
                         Console.Write( " " );
                 }
-                StringReader reader = new StringReader( code );
+                var reader = new StringReader( code );
                 string line;
                 while ((line = reader.ReadLine()) != null)
                     Console.WriteLine( line );
